@@ -1,0 +1,32 @@
+.book_appointments {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 56.5px;
+}
+
+.icon_section {
+  position: absolute;
+  bottom: 40px;
+  right: 50px;
+}
+
+.book_appointment_text {
+  width: 221px;
+  height: 45px;
+  border-radius: 21px;
+  border: 1px solid var(--black-color);
+  color: var(--green-color);
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 110px;
+  right: 10px;
+}

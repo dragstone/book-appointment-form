@@ -3,17 +3,13 @@ import { TextField } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { useRouter } from "next/navigation";
-// import Time from "./Time";
-
-import styles from "../styles/BookAppointment.module.css";
+import styles from "../../styles/BookAnAppointment/BookAppointmentForm.module.css";
 
 const initialValues = {
   name: "",
@@ -23,23 +19,57 @@ const initialValues = {
   date: "",
   time: "",
 };
+const initialErrors = {
+  name: false,
+  email: false,
+  phone: false,
+  clinic: false,
+  date: false,
+  time: false,
+};
 
-function BookAppointment() {
-  const router = useRouter();
+function BookAppointmentForm({ setFormSubmit }) {
   const [values, setValues] = useState(initialValues);
+  const [errors, setErrors] = useState(initialErrors);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
     setValues({
       ...values,
       [name]: value,
     });
+
+    if (e.target.value !== "") {
+      setErrors({
+        ...errors,
+        [name]: false,
+      });
+    }
   };
+
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    console.log("hello", values);
-    router.push("/thank-you");
+    if (
+      values.name !== "" &&
+      values.email !== "" &&
+      values.phone !== "" &&
+      values.date !== "" &&
+      values.time !== ""
+    ) {
+      setFormSubmit(true);
+    } else if (values.name === "") {
+      setErrors({ ...errors, name: true });
+    } else if (values.email === "") {
+      setErrors({ ...errors, email: true });
+    } else if (values.phone === "") {
+      setErrors({ ...errors, phone: true });
+    } else if (values.clinic === "") {
+      setErrors({ ...errors, clinic: true });
+    } else if (values.date === "") {
+      setErrors({ ...errors, date: true });
+    } else if (values.time === "") {
+      setErrors({ ...errors, time: true });
+    }
   };
 
   return (
@@ -53,6 +83,7 @@ function BookAppointment() {
           name="name"
           value={values.name}
           onChange={handleInputChange}
+          error={errors.name ? "This field is required" : null}
         />
       </FormControl>
       <FormControl fullWidth sx={{ m: 1 }} variant="standard">
@@ -63,6 +94,7 @@ function BookAppointment() {
           name="email"
           value={values.email}
           onChange={handleInputChange}
+          error={errors.email ? "This field is required" : null}
         />
       </FormControl>
       <FormControl fullWidth sx={{ m: 1 }} variant="standard">
@@ -73,6 +105,7 @@ function BookAppointment() {
           name="phone"
           value={values.phone}
           onChange={handleInputChange}
+          error={errors.phone ? "This field is required" : null}
         />
       </FormControl>
       <FormControl fullWidth variant="standard" sx={{ m: 1, minWidth: 120 }}>
@@ -86,6 +119,7 @@ function BookAppointment() {
           value={values.clinic}
           onChange={handleInputChange}
           label="Clinic"
+          error={errors.clinic ? "This field is required" : null}
         >
           <MenuItem value="">
             <em>None</em>
@@ -102,48 +136,60 @@ function BookAppointment() {
       <div className={styles.date_time_section}>
         <p className={styles.title}>Pick a Date</p>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DemoContainer components={["DatePicker"]}>
-            <DatePicker
-              // name="date"
-              value={values.date}
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  "date": e,
+          <DatePicker
+            slotProps={{
+              textField: {
+                size: "small",
+                // error: false,
+                error: errors.date ? "This field is required" : null,
+                variant: "standard",
+              },
+            }}
+            value={values.date}
+            onChange={(e) => {
+              setValues({
+                ...values,
+                "date": e,
+              });
+              if (e !== "") {
+                setErrors({
+                  ...errors,
+                  "date": false,
                 });
-              }}
-              format="DD-MM-YYYY"
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  sx={{
-                    "& .MuiOutlinedInput-root": {
-                      "& fieldset": {
-                        borderColor: "black",
-                      },
-                    },
-                  }}
-                />
-              )}
-            />
-          </DemoContainer>
+              }
+            }}
+            format="DD-MM-YYYY"
+            renderInput={(params) => (
+              <TextField {...params} className="myDatePicker" />
+            )}
+          />
         </LocalizationProvider>
       </div>
       <div className={styles.date_time_section}>
-        <p className={styles.title}>Pick a Time</p>
+        <p className={styles.title}>Select a Time</p>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          {/* <DemoItem> */}
           <TimePicker
-            // name="time"
+            slotProps={{
+              textField: {
+                size: "small",
+                error: errors.time ? "This field is required" : null,
+                variant: "standard",
+              },
+            }}
             value={values.time}
             onChange={(e) => {
               setValues({
                 ...values,
                 "time": e,
               });
+              if (e !== "") {
+                setErrors({
+                  ...errors,
+                  "time": false,
+                });
+              }
             }}
           />
-          {/* </DemoItem> */}
         </LocalizationProvider>
       </div>
       <p className={styles.confirmation_text}>
@@ -161,7 +207,7 @@ function BookAppointment() {
           borderRadius: "80px",
           textTransform: "none",
           height: "63px",
-          width: "482px",
+          width: "100%",
           "&:hover": {
             color: "#FFFFFF",
             backgroundColor: "#357A75",
@@ -179,4 +225,4 @@ function BookAppointment() {
   );
 }
 
-export default BookAppointment;
+export default BookAppointmentForm;

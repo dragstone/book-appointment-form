@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Confirmation from "@/components/Confirmation";
+import Confirmation from "@/components/BookAnAppointment/Confirmation";
 
 function ThankYou() {
   return (

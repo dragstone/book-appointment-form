@@ -3,9 +3,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px;
-  border: 1px solid black;
-  width: 50%;
+  padding: 40px 24px;
+  width: 430px;
   gap: 10px;
 }
 
@@ -14,7 +13,7 @@
   font-size: 28px;
   line-height: 44px;
   letter-spacing: 0.2px;
-  color: #505050;
+  color: var(--grey-color);
 }
 
 .date_time_section {
@@ -22,7 +21,7 @@
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .title {
@@ -30,7 +29,7 @@
   font-size: 18px;
   line-height: 44px;
   letter-spacing: 0.2px;
-  color: #505050;
+  color: var(--grey-color);
   text-align: center;
 }
 
@@ -47,11 +46,11 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  width: 500px;
+  width: 100%;
 }
 
 .refund_terms_text {
   font-size: 18px;
-  color: #0085ff;
+  color: var(--blue-color);
   list-style: 44px;
 }

@@ -1,11 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Domine&family=Grand+Hotel&family=Libre+Franklin:wght@100&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Neucha&family=Oswald:wght@200&family=Playfair+Display&family=Poppins:wght@400;700&family=Roboto+Slab:wght@200&family=Roboto:wght@100;300;400;500;700;900&family=Slabo+27px&family=Ubuntu&family=Varela+Round&display=swap");
 
+:root {
+  --black-color: #000000;
+  --grey-color: #505050;
+  --blue-color: #0085ff;
+  --orange-color: #ff6d00;
+  --green-color: #357a75;
+}
+
 * {
   font-family: "Montserrat";
 }
-.main {
+/* .main {
   display: flex;
   justify-items: center;
   justify-content: center;
   margin-top: 50px;
-}
+} */

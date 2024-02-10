@@ -1,6 +1,5 @@
 import React from "react";
-import styles from "../styles/Confirmation.module.css";
-
+import styles from "../../styles/BookAnAppointment/Confirmation.module.css";
 function Confirmation() {
   return (
     <div className={styles.thankyou_section}>

@@ -1,0 +1,26 @@
+.drawer_container {
+  padding: 0 33px;
+}
+
+.drawer_header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1px solid var(--black-color);
+}
+
+.drawer_title_section {
+  text-align: center;
+  flex-grow: 2;
+}
+
+.drawer_title {
+  font-weight: 600;
+  font-size: 24px;
+  text-align: center;
+}
+
+.horizontal_line {
+  border: 1px solid var(--black-color);
+}

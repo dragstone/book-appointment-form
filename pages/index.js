@@ -1,6 +1,5 @@
 import Head from "next/head";
-import BookAppointment from "@/components/BookAnAppointment";
-
+import Appointments from "../components/Appointments";
 export default function Home() {
   return (
     <>
@@ -11,7 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="main">
-        <BookAppointment />
+        <Appointments />
       </main>
     </>
   );
