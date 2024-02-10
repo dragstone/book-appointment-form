@@ -52,7 +52,11 @@ function Appointments() {
               {...a11yProps(0)}
               sx={{ fontSize: "18px", fontWeight: 400, textTransform: "none" }}
             />
-            <Tab label="Upcoming Appointments" {...a11yProps(1)} />
+            <Tab
+              label="Upcoming Appointments"
+              {...a11yProps(1)}
+              sx={{ fontSize: "18px", fontWeight: 400, textTransform: "none" }}
+            />
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
